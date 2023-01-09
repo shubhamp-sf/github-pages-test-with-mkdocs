@@ -24,7 +24,7 @@
     "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
     "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
     "prepare": "husky install",
-    "rebuild": "npm run clean && npm run build",
+    "rebuild": "npm run clean && npm run build && npm run export-api-ref",
     "export-api-ref": "npx typedoc"
   },
   "repository": {

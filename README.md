@@ -4,9 +4,7 @@
 
 <!-- docs-index-start -->
 
-This is a loopback4 extension that provides Sequelize's query builder at repository level in any loopback 4 application. It has zero learning curve as it follows similar interface as `DefaultCrudRepository`. For relational databases, Sequelize is a popular ORM of choice.
-
-For pending features, refer to the [Limitations](#limitations) section below.
+this is edited at 1:44PM
 
 ## Installation
 
