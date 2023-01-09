@@ -5,3 +5,4 @@ coverage/
 .cz-config.js
 commitlint.config.js
 documentation/
+site/
