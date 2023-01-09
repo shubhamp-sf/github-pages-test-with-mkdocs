@@ -1,0 +1,125 @@
+{
+  "name": "loopback4-sequelize-test-documentation",
+  "version": "2.0.0",
+  "description": "Testing documentation for loopback4 sequelize v2.0.0",
+  "keywords": [],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": "14 || 16 || 17 || 18"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "npm run eslint && npm run prettier:check",
+    "lint:fix": "npm run eslint:fix && npm run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "npm run prettier:cli -- -l",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "npm run eslint -- --fix",
+    "pretest": "npm run rebuild",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "posttest": "npm run lint",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && npm run posttest",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache",
+    "prepare": "husky install",
+    "rebuild": "npm run clean && npm run build",
+    "export-api-ref": "npx typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shubhamp-sf/github-pages-test-with-mkdocs"
+  },
+  "author": "Sourcefuse",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "peerDependencies": {
+    "@loopback/core": "^4.0.3",
+    "@loopback/repository": "^5.0.4",
+    "@loopback/rest": "^12.0.4"
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "sequelize": "^6.25.2",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@loopback/boot": "^5.0.4",
+    "@loopback/build": "^9.0.3",
+    "@loopback/core": "^4.0.3",
+    "@loopback/eslint-config": "^13.0.3",
+    "@loopback/rest": "^12.0.4",
+    "@loopback/testlab": "^5.0.3",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@types/node": "^14.18.26",
+    "commitizen": "^4.2.6",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
+    "cz-customizable-ghooks": "^2.0.0",
+    "eslint": "^8.22.0",
+    "husky": "^8.0.2",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "semantic-release": "^19.0.5",
+    "source-map-support": "^0.5.21",
+    "sqlite3": "^5.1.2",
+    "typedoc": "^0.23.23",
+    "typedoc-plugin-markdown": "^3.14.0",
+    "typescript": "~4.7.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "chore",
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "CHANGELOG.md"
+          ],
+          "message": "chore(release): ${nextRelease.version} semantic"
+        }
+      ],
+      "@semantic-release/github"
+    ],
+    "repositoryUrl": "git@github.com:sourcefuse/loopback4-sequelize.git"
+  }
+}
